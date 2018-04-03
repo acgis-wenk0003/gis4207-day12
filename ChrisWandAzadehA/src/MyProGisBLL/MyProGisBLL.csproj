@@ -40,7 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interface1.cs" />
+    <Compile Include="MapDocument.cs" />
+    <Compile Include="Map.cs" />
+    <Compile Include="Layer.cs" />
+    <Compile Include="FeatureLayer.cs" />
+    <Compile Include="IMapDocument.cs" />
+    <Compile Include="IMapManager.cs" />
+    <Compile Include="IMap.cs" />
+    <Compile Include="ILayer.cs" />
+    <Compile Include="IFeatureLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
