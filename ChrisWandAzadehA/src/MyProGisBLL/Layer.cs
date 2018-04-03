@@ -6,7 +6,21 @@ using System.Threading.Tasks;
 
 namespace MyProGisBLL
 {
-    class Layer
+    public class Layer : ILayer
     {
+        private string _name;
+
+        string ILayer.Name
+        {
+            get
+            {
+                return _name;
+            }
+
+            set
+            {
+                _name = value;
+            }
+        }
     }
 }

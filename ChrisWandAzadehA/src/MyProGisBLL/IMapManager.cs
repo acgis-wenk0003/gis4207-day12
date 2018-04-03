@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace MyProGisBLL
 {
-    interface IMapManager
+    public interface IMapManager
     {
+        void AddMap(IMap map);
+        void RemoveMap(int index);
+        void SetFocusMap(int index);
     }
 }
