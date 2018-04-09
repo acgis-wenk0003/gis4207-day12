@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace MyProGisBLL
 {
-    public interface IFeatureLayer : ILayer
+    public interface IFeatureLayer
     {
-        string FeatureClass { get; set; }
+        string FeatureClass { get; set; }   
     }
 }

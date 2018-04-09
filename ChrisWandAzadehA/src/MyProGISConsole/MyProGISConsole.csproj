@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B486BFCB-213B-47EA-9975-E68313629BEA}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{02E1B448-4C4B-4982-A33F-0570F4CE4523}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MyProGisBLL</RootNamespace>
-    <AssemblyName>MyProGisBLL</AssemblyName>
+    <RootNamespace>MyProGISConsole</RootNamespace>
+    <AssemblyName>MyProGISConsole</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -40,16 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FeatureLayer.cs" />
-    <Compile Include="Layer.cs" />
-    <Compile Include="Map.cs" />
-    <Compile Include="MapDocument.cs" />
-    <Compile Include="IMapDocument.cs" />
-    <Compile Include="IMapManager.cs" />
-    <Compile Include="IMap.cs" />
-    <Compile Include="ILayer.cs" />
-    <Compile Include="IFeatureLayer.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyProGisBLL\MyProGisBLL.csproj">
+      <Project>{b486bfcb-213b-47ea-9975-e68313629bea}</Project>
+      <Name>MyProGisBLL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

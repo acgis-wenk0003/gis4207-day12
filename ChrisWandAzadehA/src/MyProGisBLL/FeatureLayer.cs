@@ -6,34 +6,17 @@ using System.Threading.Tasks;
 
 namespace MyProGisBLL
 {
-    class FeatureLayer : IFeatureLayer
+    public class FeatureLayer : Layer, IFeatureLayer
     {
-        private string _featureClass;
-        private string _name;
-
-        string IFeatureLayer.FeatureClass
-        {
+        private string _FeatureClass;
+        string IFeatureLayer.FeatureClass {
             get
             {
-                return _featureClass;
+                return _FeatureClass;
             }
-
             set
             {
-                _featureClass = value;
-            }
-        }
-
-        string ILayer.Name
-        {
-            get
-            {
-                return _name;
-            }
-
-            set
-            {
-                _name = value;
+                _FeatureClass = value;
             }
         }
     }

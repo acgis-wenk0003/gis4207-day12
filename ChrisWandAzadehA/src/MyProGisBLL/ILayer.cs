@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyProGisBLL
 {
-    public interface ILayer 
+    public interface ILayer
     {
         string Name { get; set; }
     }

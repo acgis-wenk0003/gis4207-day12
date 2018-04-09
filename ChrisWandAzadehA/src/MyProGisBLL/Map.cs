@@ -6,53 +6,59 @@ using System.Threading.Tasks;
 
 namespace MyProGisBLL
 {
-    public class Map : IMap
+    public class Map: IMap
     {
-        private int _layerCount;
-        private ILayer[] _layers = new ILayer[0];
-        private string _name;
-
-        int IMap.LayerCount
-        {
+        //Properties
+        private string _Name;
+        private ILayer[] _Layers= new Layer[0];
+        private int _LayerCount;
+        
+        string IMap.Name {
             get
             {
-                return _layerCount;
+                return _Name;
             }
-        }
-
-        ILayer[] IMap.Layers
-        {
-            get
-            {
-                return _layers;
-            }
-        }
-
-        string IMap.Name
-        {
-            get
-            {
-                return _name;
-            }
-
             set
             {
-                _name = value;
+                _Name = value;
             }
         }
 
+        ILayer[] IMap.Layers { get { return _Layers; } }
+        int IMap.LayerCount { get { return _LayerCount; } }
+
+        //Methods
         void IMap.AddLayer(ILayer layer)
         {
-            
-            Array.Resize(ref _layers, _layers.Length + 1);
-            _layers[_layers.Length - 1] = layer;
-            _layerCount += 1;
-
+            Array.Resize(ref _Layers, _Layers.Length+1);
+            _LayerCount += 1;
+            _Layers[_Layers.Length-1] = layer;                      
         }
 
         void IMap.RemoveLayer(int index)
         {
-            throw new NotImplementedException();
+            int removeindex = Array.IndexOf(_Layers, index);
+            List<ILayer> new_layers = _Layers.ToList();
+            List<ILayer> outputlayers = new List<ILayer>();
+            int indexcount = 0;
+            foreach (ILayer LLayer in new_layers)
+            {
+                if (indexcount == removeindex)
+                {
+                    indexcount += 1;
+                    continue;
+                }
+                else
+                {
+                    indexcount += 1;
+                    outputlayers.Add(LLayer);
+                    
+                }
+                
+            }
+            _Layers = outputlayers.ToArray<ILayer>();
+            Array.Resize(ref _Layers, _Layers.Length - 1);
+            _LayerCount -= 1;
         }
     }
 }

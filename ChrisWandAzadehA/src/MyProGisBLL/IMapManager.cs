@@ -8,8 +8,10 @@ namespace MyProGisBLL
 {
     public interface IMapManager
     {
+        //Methods
         void AddMap(IMap map);
         void RemoveMap(int index);
         void SetFocusMap(int index);
+
     }
 }

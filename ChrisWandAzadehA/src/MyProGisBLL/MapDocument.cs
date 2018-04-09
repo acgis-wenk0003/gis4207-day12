@@ -8,43 +8,85 @@ namespace MyProGisBLL
 {
     public class MapDocument : IMapDocument, IMapManager
     {
-        private IMap _focusMap;
-        private IMap[] _maps;
+        //Properties MapDocument
+        private IMap _FocusMap;
+        private IMap[] _Maps = new Map[0];
+         
+        IMap IMapDocument.FocusMap { get { return _FocusMap; } }
+        IMap[] IMapDocument.Maps { get { return _Maps; } }
 
-        IMap IMapDocument.FocusMap
+        //Methods MapDocument
+        IMap IMapDocument.GetMap (string name)
         {
-            get
+            IMap output;
+            int indexcount = 0;
+            foreach (IMap AMap in _Maps)
             {
-                return _focusMap;
+
+                if (AMap.Name.Equals(name)==true)
+                {
+                    output = AMap;
+                    return output;
+                    
+
+                }
+                if (!AMap.Name.Equals(name) & _Maps.Length.Equals(indexcount))
+                {
+                    output = new Map();
+                    output.Name = "NULL MAP";
+                    return null;
+                }
+                else
+                {
+                    indexcount += 1;
+                    continue;
+                }
+
             }
+            output = new Map();
+            output.Name = "NULL MAP break 2";
+            return output;
         }
 
-        IMap[] IMapDocument.Maps
-        {
-            get
-            {
-                return _maps;
-            }
-        }
-
+        //Methods MapManager
         void IMapManager.AddMap(IMap map)
         {
-            throw new NotImplementedException();
+            Array.Resize(ref _Maps, _Maps.Length + 1);
+            _Maps[_Maps.Length-1] = map;
         }
 
-        IMap IMapDocument.GetMap(string name)
+        void IMapManager.RemoveMap (int index)
         {
-            throw new NotImplementedException();
+            int removeindex = Array.IndexOf(_Maps, index);
+            List<IMap> new_maps = _Maps.ToList();
+            List<IMap> outputmaps = new List<IMap>();
+            int indexcount = 0;
+            foreach (IMap LMap in new_maps)
+            {
+                if (indexcount == removeindex)
+                {
+                    indexcount += 1;
+                }
+                else
+                {
+                    indexcount += 1;
+                    outputmaps.Add(LMap);
+                }
+                
+            }
+            _Maps = outputmaps.ToArray<IMap>();
+            Array.Resize(ref _Maps, _Maps.Length - 1);
         }
 
-        void IMapManager.RemoveMap(int index)
+        void IMapManager.SetFocusMap (int index)
         {
-            throw new NotImplementedException();
-        }
+            if (index < _Maps.Length)
+            {
 
-        void IMapManager.SetFocusMap(int index)
-        {
-            throw new NotImplementedException();
+                IMap transfermap = _Maps[index];
+                _FocusMap = transfermap;
+            }
+            
         }
     }
 }
